@@ -1,2 +1,109 @@
 echo "Updated content" 
 echo "Hotfix update"
+
+SETA
+A) clone any public repository on GitHub using the 'git clone' command.
+->git clone https://github.com/bhosalesakshi772-rgb/my-git-practical.git
+Git hub la jaun ek repository karychi public mode ON thevaycha.
+
+B). . Create a public repository with a 'README.md' file, and subsequently modify the 'README.md' file to articulate the purpose of the repository. Finally, commit those changes with an appropriate message.
+	First tr Repo create karaychi then tyatle readme file aaplyla edit karychi aahe tr 
+	Tr tyasathi:
+Notepad README.md   he command karychi notepad open hoil tith text edit karycha 
+echo "This repository is created for Git practical."
+git add README.md
+git commit -m "Updated README with project purpose"
+
+C). Globally configure your username and email on the local machine, utilize the 'git config' command.
+-> git config --global user.name "SakshiBhosale"
+git config --global user.email "bhosalesakshi772@email.com"
+
+D). Pull the 'README.md' file from the previously created public repository
+->git pull origin main
+E) Edit the 'README.md' file and create an 'index.html' file, then add both files to the staging area.
+->1.notepad README.md
+2. index.html file create कर
+touch index.html
+3. files staging area मध्ये add कर
+git add README.md index.html
+
+F) Push the changes made to the previously created files to the repository, and use the upstream flag to push changes to that repository
+->git commit -m "Added index.html and updated README"
+git push -u origin main…………he kelayvr aaplya github chya repo madhe aaplyla  index.html chi fie add zaleli diste ani README update zaleli diste 
+
+SET B)
+2) Branching, Merging, and Diffs Workflow 
+a) Refer to Figure 0.1 where: 
+● C0 (commit): Indicates the addition of an h1 tag in 'README.md'. 
+● C1 (commit): Creation of a new txt file. 
+● C2 (commit): Modification in the txt file.  
+Push the changes made above to the remote repository of the origin main 
+branch.
+->Step 1: C0 → README.md मध्ये h1 tag add कर
+echo "<h1>Hello</h1>" >> README.md( command karychi notepad README.md ani tyamdhe echo karych)
+
+git add README.md(aata edit kelyavr git la add karaychii)
+git commit -m "C0: Added h1 tag in README"
+
+Step 2: C1 → new txt file create कर
+touch file.txt(file create karaychi)
+
+git add file.txt(git la add karne)
+git commit -m "C1: Created new txt file"
+
+Step 3: C2 → txt file modify कर
+echo "Updated content" >> file.txt( ji create keli li file aahe tyamadhe he update karaych)
+
+git add file.txt(git la add karaychii)
+git commit -m "C2: Modified txt file"
+
+Step 4: Push to remote (main branch)
+git push origin main
+
+SET C
+b) Refer to Figure 0.2 where: ● iss53 (issue53): “iss53” is the name of a branch. ● C3 (commit): Denotes the creation of the “index.html” file and updating “readme.md” in the “iss53” branch. To discern the differences between commits C1 and C2, as well as to compare the “main” branch with “iss53”, utilize the “git diff' command”. Push the changes made on the 'iss53' branch to the remote repository. Fig:0.2
+->b) iss53 branch + C3 commit + diff + push
+ Step 1: iss53 branch create आणि switch
+git checkout -b iss53
+ Step 2: index.html create + README update (C3)
+touch index.html
+echo "Updated in iss53 branch" >> README.md
+
+git add .
+git commit -m "C3: Added index.html and updated README in iss53"
+ Step 3: Diff check कर (C1 vs C2 + main vs iss53)
+git diff HEAD~2 HEAD~1
+git diff main iss53
+ Step 4: iss53 branch push कर
+git push origin iss53
+
+c) Refer to Figure 0.3 where: ● hotfix: 'hotfix' is the name of a branch. Dept. of Comp. Sci., S. P. College, Pune S.P.College, Dept. of. Comp.Sci. 26 ● C4 (commit): Denotes the update of the 'new txt file' in the 'hotfix' branch. Additionally, push the changes made on the 'hotfix' branch to the remote repository. Fig:0.3
+->c) hotfix branch + C4 commit + push
+ Step 1: main वर जा
+git checkout main
+ Step 2: hotfix branch create
+git checkout -b hotfix
+ Step 3: txt file update (C4)
+echo "Hotfix update" >> file.txt(notepad file.txt vaprun edit karne)
+
+
+git add file.txt
+git commit -m "C4: Updated txt file in hotfix branch"
+ Step 4: hotfix push कर
+git push origin hotfix
+
+d) Merge the 'hotfix' branch into the 'main' branch and delete the 'hotfix' branch, as shown in Figure 0.4.
+-> Merge hotfix into main + delete branch
+ Step 1: main वर जा
+git checkout main
+ Step 2: merge hotfix
+git merge hotfix
+ Step 3: delete hotfix branch
+git branch -d hotfix
+
+e) Merge the 'iss53' branch into the 'main' branch and delete the 'iss53' branch.
+->
+git checkout main
+git merge iss53
+git branch -d iss53
+
