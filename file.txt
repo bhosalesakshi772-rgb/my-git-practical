@@ -107,3 +107,6 @@ git checkout main
 git merge iss53
 git branch -d iss53
 
+
+
+echo"updated the txt file with hotfix branch"
